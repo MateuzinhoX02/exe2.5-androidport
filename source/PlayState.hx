@@ -330,7 +330,7 @@ class PlayState extends MusicBeatState
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
-		FunkinUtil.dumpCache();
+		Main.dumpCache();
 
 		//cache de songs pq sim.
 		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));

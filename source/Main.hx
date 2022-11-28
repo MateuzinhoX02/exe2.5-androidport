@@ -92,6 +92,26 @@ class Main extends Sprite
 		#end
 	}
 
+	public static function dumpCache() // Stoled from kade engine :)
+		{
+			@:privateAccess
+			for (key in FlxG.bitmap._cache.keys())
+			{
+				var obj = FlxG.bitmap._cache.get(key);
+				if (obj != null)
+				{
+					Assets.cache.removeBitmapData(key);
+					FlxG.bitmap._cache.remove(key);
+					obj.destroy();
+				}
+			}
+			Paths.localTrackedAssets = [];
+			Paths.currentTrackedAssets = [];
+			Assets.cache.clear("songs");
+			Assets.cache.clear("shared");
+			Assets.cache.clear("preload");
+		}
+
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
 	#if CRASH_HANDLER
