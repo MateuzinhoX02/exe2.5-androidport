@@ -1017,12 +1017,12 @@ class PlayState extends MusicBeatState
 		strumLine.scrollFactor.set();
 
 		var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
-		if (!nomedamusica.toLowerCase() == 'endless' || !curSong == 'endless-encore' || !curSong == 'endless-og'){
+		if (nomedamusica.toLowerCase() == 'endless' || curSong == 'endless-encore' || curSong == 'endless-og'){
+		timeTxt.text = "THE FUN IS INFINITE"; //Só não enxerga que é sego com s de Sega
+		timeTxt.setFormat(Paths.font("sonic-1-hud-font.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);	
+		} else {
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
 		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		} else {
-		timeTxt.text = "THE FUN IS INFINITE"; //Só não enxerga que é sego com s de Sega
-		timeTxt.setFormat(Paths.font("sonic-1-hud-font.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		}
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
@@ -4988,10 +4988,11 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		if(nomedamusica.toLowercase() == 'too-slow') 
+		if(nomedamusica.toLowerCase() == 'too-slow') 
 		{
 			//começo da gambiarra
 			//to do: trocar isso pra eventos, pq é mais fácil de dar certo, lol
+			//Credits: Matheus Silver - the code
 			if(curStep == 10) 
 			{
 			remove(dad);
