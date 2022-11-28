@@ -27,7 +27,7 @@ class FunkinUtil
    public static function playVideo(videoName:String, videoPath:String, target:FlxState) 
    {
    videopath = "assets/videos/" + videoName;
-   FlxG.switchState(new DaVideoHandler(videoPath), target)   
+   FlxG.switchState(new DaVideoHandler(videoPath), target);  
    }
 
    public static function cutsceneStart()
@@ -47,7 +47,7 @@ class FunkinUtil
 
    public static function traceLog(msg:String) 
    {
-   Lib.application.window.alert(msg);
+   Application.current.window.alert(msg);
    }
 
    public static function doSongPrecache()
