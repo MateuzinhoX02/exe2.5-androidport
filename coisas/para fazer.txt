@@ -1,0 +1,5 @@
+Adicionar todos os menus e coisas originais do Sonic EXE 2.5
+Adicionar a mod folder no apk final (por motivos de pressa)
+Otimizar tudo após aquilo lá (Eu sei que você sabe o que eu sei que você sabe)
+Otimização de code
+Ajustes maneiros na source
