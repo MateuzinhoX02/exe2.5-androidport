@@ -326,11 +326,15 @@ class PlayState extends MusicBeatState
 	public static var lastScore:Array<FlxSprite> = [];
 
 	public static var nomedamusica:String; // Isso é por conta da minha burrice, eu esqueco o nome das songs sempre.
-
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
+		FunkinUtil.dumpCache();
+
+		//cache de songs pq sim.
+		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
+        FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
 
 		nomedamusica = SONG.song.toLowerCase();
 
@@ -1051,7 +1055,7 @@ class PlayState extends MusicBeatState
 			'songPercent', 0, 1);
 		timeBar.scrollFactor.set();
 		timeBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
-		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
+		timeBar.numDivisions = 200; //nao
 		timeBar.alpha = 0;
 		timeBar.visible = showTime;
 		add(timeBar);
@@ -4982,6 +4986,24 @@ class PlayState extends MusicBeatState
 
 		if(curStep == lastStepHit) {
 			return;
+		}
+
+		if(nomedamusica.toLowercase() == 'too-slow') 
+		{
+			//começo da gambiarra
+			//to do: trocar isso pra eventos, pq é mais fácil de dar certo, lol
+			if(curStep == 10) 
+			{
+			remove(dad);
+			dad = new Character(200, 250, 'sonicrisada');
+			add(dad);
+			}
+			if(curStep == 13)
+			{
+			remove(dad);
+			dad = new Character(200, 250, 'sonic');
+			add(dad);
+			}
 		}
 
 		lastStepHit = curStep;
